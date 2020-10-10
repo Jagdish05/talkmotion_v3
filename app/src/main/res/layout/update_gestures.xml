@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.jkotheimer.TalkMotion.MainActivity">
-
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_sec"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/rounded_corners_red"
-        android:onClick="changeMain"
-        android:text="@string/cancel"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/colorPrimary" />
+<!--    <Button-->
+<!--        android:id="@+id/cancel_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginLeft="24dp"-->
+<!--        android:layout_marginTop="28dp"-->
+<!--        android:background="@drawable/rounded_corners_red"-->
+<!--        android:onClick="changeMain"-->
+<!--        android:text="@string/cancel"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ScrollView
         android:id="@+id/Scroller"
-        android:layout_width="367dp"
-        android:layout_height="465dp"
-        app:layout_constraintBottom_toTopOf="@+id/restore_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cancel_button"
-        app:layout_constraintVertical_bias="0.534">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_sec">
 
         <LinearLayout
             android:id="@+id/LL"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
@@ -48,32 +53,32 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/restore_button"
-        android:layout_width="140dp"
-        android:layout_height="66dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="52dp"
-        android:background="@drawable/rounded_corners"
-        android:onClick="restoreToDefaultSettings"
-        android:text="@string/restore_to_default"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/restore_button"-->
+<!--        android:layout_width="140dp"-->
+<!--        android:layout_height="66dp"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginLeft="24dp"-->
+<!--        android:layout_marginBottom="52dp"-->
+<!--        android:background="@drawable/rounded_corners"-->
+<!--        android:onClick="restoreToDefaultSettings"-->
+<!--        android:text="@string/restore_to_default"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
-    <Button
-        android:id="@+id/save_button"
-        android:layout_width="143dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/rounded_corners_green"
-        android:onClick="saveGes"
-        android:text="@string/save_changes"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+<!--    <Button-->
+<!--        android:id="@+id/save_button"-->
+<!--        android:layout_width="143dp"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginRight="16dp"-->
+<!--        android:layout_marginBottom="60dp"-->
+<!--        android:background="@drawable/rounded_corners_green"-->
+<!--        android:onClick="saveGes"-->
+<!--        android:text="@string/save_changes"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

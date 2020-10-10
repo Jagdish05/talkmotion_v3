@@ -1,5 +1,6 @@
 package com.example.please;
 
+import android.content.Intent;
 import android.os.Build;
 import android.util.TypedValue;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.please.Database.DatabaseHelper;
 
@@ -27,6 +29,7 @@ class TransitionHandler {
     private final DatabaseHelper db;
 
 
+//        a.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     void changeGesture(Boolean restoreToDefault) {
@@ -102,6 +105,9 @@ class TransitionHandler {
 
             margin += 5;
         }
+
+        actionBar();
+
     }
 
     void saveGesture() {
@@ -131,7 +137,7 @@ class TransitionHandler {
             System.out.println(names[i] +" mapped to " + gestures[i]);
         }
         db.insertNames(names, gestures);
-        a.setContentView(R.layout.settings);
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
@@ -146,7 +152,6 @@ class TransitionHandler {
         if (restoreToDefault) {
            gests = a.getResources().getStringArray(R.array.gestures);
         }
-
 
         // Get the container in which we will be placing all of the children
         LinearLayout LL = a.findViewById(R.id.LL1);
@@ -203,6 +208,7 @@ class TransitionHandler {
 
             margin += 5;
         }
+        actionBar();
     }
 
     void saveGestureDef() {
@@ -234,6 +240,8 @@ class TransitionHandler {
         //db.insertNames(names, gestures, a.getNameChoices());
         db.updateGestureIds(new_gest_names, old_gest_name);
         a.setContentView(R.layout.settings);
+
+
     }
 
 
@@ -246,7 +254,28 @@ class TransitionHandler {
         a.setContentView(R.layout.settings);
     }
 
-    void changeMain(View v) {
-        a.setContentView(R.layout.activity_main);
+//    void changeMain(View v) {
+//        a.setContentView(R.layout.activity_main);
+//    }
+
+    void actionBar(){
+        Toolbar toolbar = (Toolbar) a.findViewById(R.id.toolbar_sec);
+        a.setSupportActionBar(toolbar);
+        a.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                finish();
+//                transition.changeMain(v);
+//                a.setContentView(R.layout.activity_main);
+//                a.recreate();
+                a.finish();
+                a.startActivity(a.getIntent());
+                a.overridePendingTransition(0, 0);
+
+
+            }
+        });
     }
+
 }

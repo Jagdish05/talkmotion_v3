@@ -1,6 +1,7 @@
 package com.example.please;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -19,12 +20,12 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.appcompat.widget.Toolbar;
+
 
 import com.example.please.Database.DatabaseHelper;
 import com.example.please.StateMachine.StateMachine;
@@ -124,15 +125,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         // Typical android setup stuff
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_sec);
+        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                finish();
+//                transition.changeMain(v);
+                setContentView(R.layout.activity_main);
+            }
+        });
 
-//        ActionBar actionbar = getSupportActionBar();
-//        actionbar.setHomeAsUpIndicator(R.drawable.rounded_corners_red);
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.topAppBar);
-//        toolbar.setSubtitle("Test Subtitle");
-//        toolbar.inflateMenu(R.menu.menu_main);
 
-        // Instantiate the StateMachine and the Transition handler
         DatabaseHelper db = new DatabaseHelper(this);
         sm = new StateMachine(this, db);
         transition = new TransitionHandler(this, db);
@@ -253,11 +259,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
-    public void changeMain(View v) {
-        transition.changeMain(v);
-//        Button b = findViewById(R.id.OnOff);
-//        if(!isOn) b.setText(R.string.off);
-    }
+//    public void changeMain(View v) {
+//        transition.changeMain(v);
+////        Button b = findViewById(R.id.OnOff);
+////        if(!isOn) b.setText(R.string.off);
+//    }
 
     public void saveGes(View v) {
         transition.saveGesture();
