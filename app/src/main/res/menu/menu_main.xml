@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/changeGestureWord"
+        android:title="@string/change_gesture_word"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/changeGestureDefinition"
+        android:title="@string/change_gesture_definition"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/gestureMode"
+        android:title=""
+        app:actionLayout="@layout/switch_layout"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+</menu>

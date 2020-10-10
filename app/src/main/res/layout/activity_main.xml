@@ -1,0 +1,47 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingClass">
+
+<!--<com.google.android.material.appbar.AppBarLayout-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="wrap_content">-->
+<!--    <com.google.android.material.appbar.MaterialToolbar-->
+<!--        android:id="@+id/topAppBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        app:title="@string/app_name"-->
+<!--        app:menu="@menu/menu_main"-->
+<!--        style="@style/Widget.MaterialComponents.Toolbar.Primary"/>-->
+<!--        <Button-->
+<!--            android:id="@+id/settings"-->
+<!--            android:background="@drawable/rounded_corners_light_blue"-->
+<!--            android:onClick="changeSettings"-->
+<!--            android:text="@string/settings"-->
+<!--            android:textColor="#FFFFFF"-->
+<!--            android:textSize="20sp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_width="match_parent" />-->
+<!--</com.google.android.material.appbar.AppBarLayout>-->
+
+
+<!--    <Button-->
+<!--        android:id="@+id/OnOff"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="250dp"-->
+<!--        android:layout_margin="100dp"-->
+<!--        android:background="@drawable/rounded_corners_red"-->
+<!--        android:onClick="toggleOnOff"-->
+<!--        android:text="@string/off"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="60sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.496"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="1.0" />-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
