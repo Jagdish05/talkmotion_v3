@@ -240,8 +240,6 @@ class TransitionHandler {
         //db.insertNames(names, gestures, a.getNameChoices());
         db.updateGestureIds(new_gest_names, old_gest_name);
         a.setContentView(R.layout.settings);
-
-
     }
 
 
@@ -250,6 +248,7 @@ class TransitionHandler {
         a.setContentView(R.layout.logo);
     }
 
+    
     void changeSettings() {
         a.setContentView(R.layout.settings);
     }
@@ -272,8 +271,6 @@ class TransitionHandler {
                 a.finish();
                 a.startActivity(a.getIntent());
                 a.overridePendingTransition(0, 0);
-
-
             }
         });
     }
