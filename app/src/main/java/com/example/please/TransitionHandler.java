@@ -1,6 +1,5 @@
 package com.example.please;
 
-import android.content.Intent;
 import android.os.Build;
 import android.util.TypedValue;
 import android.view.View;
@@ -67,7 +66,7 @@ class TransitionHandler {
             lp.setMargins(0,margin,0,0);
             et = new EditText(a);
             et.setText(gestureNames[i]);
-            et.setWidth(650);
+            et.setWidth(450);
             et.setHeight(150);
             et.setTextSize(TypedValue.COMPLEX_UNIT_PX, 60);
             et.setInputType(TYPE_CLASS_TEXT);
@@ -176,7 +175,7 @@ class TransitionHandler {
             lp.setMargins(0,margin,0,0);
             et = new EditText(a);
             et.setText(gests[i]);
-            et.setWidth(650);
+            et.setWidth(450);
             et.setHeight(150);
             et.setTextSize(TypedValue.COMPLEX_UNIT_PX, 60);
             et.setInputType(TYPE_CLASS_TEXT);
@@ -253,9 +252,9 @@ class TransitionHandler {
         a.setContentView(R.layout.settings);
     }
 
-//    void changeMain(View v) {
-//        a.setContentView(R.layout.activity_main);
-//    }
+    void changeMain(View v) {
+        a.setContentView(R.layout.activity_main);
+    }
 
     void actionBar(){
         Toolbar toolbar = (Toolbar) a.findViewById(R.id.toolbar_sec);
@@ -264,10 +263,6 @@ class TransitionHandler {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                finish();
-//                transition.changeMain(v);
-//                a.setContentView(R.layout.activity_main);
-//                a.recreate();
                 a.finish();
                 a.startActivity(a.getIntent());
                 a.overridePendingTransition(0, 0);
