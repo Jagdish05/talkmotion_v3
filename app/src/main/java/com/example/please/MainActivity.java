@@ -25,6 +25,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 
 import com.example.please.Database.DatabaseHelper;
@@ -126,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_sec);
+        toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.cancel));
         setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -259,11 +261,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
-//    public void changeMain(View v) {
-//        transition.changeMain(v);
+    public void changeMain(View v) {
+        transition.changeMain(v);
 ////        Button b = findViewById(R.id.OnOff);
 ////        if(!isOn) b.setText(R.string.off);
-//    }
+    }
 
     public void saveGes(View v) {
         transition.saveGesture();
