@@ -15,5 +15,6 @@
         android:title=""
         app:actionLayout="@layout/switch_layout"
         app:showAsAction="always"
-        tools:ignore="AlwaysShowAction" />
+        tools:ignore="AlwaysShowAction"
+        />
 </menu>

@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_sec);
-        toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.cancel));
+        toolbar.setOverflowIcon(ContextCompat.getDrawable(this, R.drawable.setting));
         setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -261,12 +261,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
-    public void changeMain(View v) {
-        transition.changeMain(v);
-////        Button b = findViewById(R.id.OnOff);
-////        if(!isOn) b.setText(R.string.off);
-    }
+    public void changeMainForDefinition(View v) {
+        transition.changeMainForDefinition(v);
 
+    }
+    public void changeMainForGesture(View v) {
+        transition.changeMainForGesture(v);
+    }
     public void saveGes(View v) {
         transition.saveGesture();
     }
@@ -275,20 +276,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         transition.saveGestureDef();
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-//    public void restoreToDefaultSettings(View v) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            transition.changeGesture(true);
-//        }
-//    }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
+    public void restoreToDefaultSettings(View v) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            transition.changeGesture(true);
+        }
+    }
 //
 //
-//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
-//    public void restoreToDefaultGestureDef(View v) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            transition.changeGestureDef(true);
-//        }
-//    }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
+    public void restoreToDefaultGestureDef(View v) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            transition.changeGestureDef(true);
+        }
+    }
     /**
      * Check the motion of each axis when there is an acceleration event
      * If there is extraneous x movement, call x_move on the state machine

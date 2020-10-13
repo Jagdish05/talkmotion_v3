@@ -46,7 +46,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/actionbarT"
-        android:background="@color/colorPrimary"
+        android:background="@color/white"
         app:theme="@style/Base.Theme.AppCompat.CompactMenu"
         tools:ignore="MissingConstraints"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +64,7 @@
             android:id="@+id/cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="changeMain"
+            android:onClick="changeMainForGesture"
             android:src="@drawable/cancel2"
             android:layout_marginLeft="60sp"
             tools:ignore="PrivateResource" />

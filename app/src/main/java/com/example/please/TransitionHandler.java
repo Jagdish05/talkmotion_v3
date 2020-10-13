@@ -8,9 +8,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.example.please.Database.DatabaseHelper;
 
@@ -105,7 +107,7 @@ class TransitionHandler {
             margin += 5;
         }
 
-        actionBar();
+        actionBarForUpdateGesture();
 
     }
 
@@ -130,13 +132,14 @@ class TransitionHandler {
 
         String[] names = new String[editTexts.size()];
         String[] gestures = new String[editTexts.size()];
+        Toast.makeText(a.getApplicationContext(), "saveGesture!!"+gestures, Toast.LENGTH_SHORT).show();
         for(int i = 0; i < editTexts.size(); i++) {
             names[i] = editTexts.get(i).getText().toString();
             gestures[i] = spinners.get(i);
             System.out.println(names[i] +" mapped to " + gestures[i]);
         }
         db.insertNames(names, gestures);
-
+        actionBarForUpdateGesture();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
@@ -207,7 +210,7 @@ class TransitionHandler {
 
             margin += 5;
         }
-        actionBar();
+        actionBarForDefinition();
     }
 
     void saveGestureDef() {
@@ -231,6 +234,7 @@ class TransitionHandler {
 
         String[] new_gest_names = new String[editTexts.size()];
         String[] old_gest_name = new String[editTexts.size()];
+        Toast.makeText(a.getApplicationContext(), "saveGesture!!"+old_gest_name, Toast.LENGTH_SHORT).show();
         for(int i = 0; i < editTexts.size(); i++) {
             new_gest_names[i] = editTexts.get(i).getText().toString();
             old_gest_name[i] = nonEditTexts.get(i);
@@ -238,7 +242,7 @@ class TransitionHandler {
         }
         //db.insertNames(names, gestures, a.getNameChoices());
         db.updateGestureIds(new_gest_names, old_gest_name);
-        a.setContentView(R.layout.settings);
+        actionBarForDefinition();
     }
 
 
@@ -252,12 +256,22 @@ class TransitionHandler {
         a.setContentView(R.layout.settings);
     }
 
-    void changeMain(View v) {
-        a.setContentView(R.layout.activity_main);
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
+    void changeMainForDefinition(View v) {
+        changeGestureDef(false);
+
     }
 
-    void actionBar(){
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
+    void changeMainForGesture(View v) {
+
+        changeGesture(false);
+
+    }
+    void actionBarForDefinition(){
         Toolbar toolbar = (Toolbar) a.findViewById(R.id.toolbar_sec);
+        toolbar.setOverflowIcon(ContextCompat.getDrawable(a.getApplicationContext(), R.drawable.setting));
+        toolbar.setTitle("Gesture Definition");
         a.setSupportActionBar(toolbar);
         a.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -269,5 +283,19 @@ class TransitionHandler {
             }
         });
     }
-
+    void actionBarForUpdateGesture(){
+        Toolbar toolbar = (Toolbar) a.findViewById(R.id.toolbar_sec);
+        toolbar.setOverflowIcon(ContextCompat.getDrawable(a.getApplicationContext(), R.drawable.setting));
+        toolbar.setTitle("Gesture Word");
+        a.setSupportActionBar(toolbar);
+        a.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                a.finish();
+                a.startActivity(a.getIntent());
+                a.overridePendingTransition(0, 0);
+            }
+        });
+    }
 }
