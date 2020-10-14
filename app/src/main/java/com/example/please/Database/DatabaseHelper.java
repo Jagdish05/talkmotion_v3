@@ -6,12 +6,17 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.please.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    private static final String TAG = "MyActivity";
 
     private static final String DATABASE_NAME = "gesture_names.db";
     private static final String TABLE_NAME = "gesture_names";
@@ -122,12 +127,51 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public String[] getNames() {
-        return c.getResources().getStringArray(R.array.names);
-        /*ArrayList<String> names = new ArrayList<>();
+//        Log.i(TAG, Arrays.toString(new int[]{c.getResources().getStringArray(R.array.names).length}));
+//        List<String> names = new ArrayList<>();
+//        names.clear();
+//
+//
+//        final String TABLE_NAME = "gesture_names";
+//
+//        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+//        SQLiteDatabase db  = this.getReadableDatabase();
+//        Cursor cursor      = db.rawQuery(selectQuery, null);
+//        String[] data      = null;
+//
+//        if (cursor.moveToFirst()) {
+//            do {
+////                Log.i(TAG, String.valueOf(cursor.getCount()));
+//                Log.i(TAG,"Gesture "+Arrays.toString(new String[]{cursor.getString(0)}) +"Text "+Arrays.toString(new String[]{cursor.getString(1)}));
+//                // get the data into array, or class variable
+//                names.add(cursor.getString(1));
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//
+//        String[] returnNames = new String[names.size()];
+////        returnNames.length()
+//        Log.i(TAG, String.valueOf(returnNames.length));
+//
+//        for(int i = 0; i < names.size(); i++) {
+//            returnNames[i] = names.get(i);
+////            Log.i(TAG, String.valueOf(returnNames[i]));
+//
+//        }
+//        return returnNames;
+//        Log.i(TAG, String.valueOf(returnNames));
 
-        @SuppressLint("Recycle") Cursor cursor = this.db.rawQuery(
-                "SELECT "+ WORDS + " FROM " +  TABLE_NAME + " WHERE " + SCENARIOS + "=" + 0, null);
-                //"SELECT " + (newName ? NEWWORDS : WORDS)  + " FROM " + TABLE_NAME, null);
+
+//        return c.getResources().getStringArray(R.array.names);
+//        return String.valueOf(names);
+
+
+
+
+        ArrayList<String> names = new ArrayList<>();
+
+        Cursor cursor = this.db.rawQuery(
+                "SELECT " + WORDS + " FROM " + TABLE_NAME+ " WHERE " + SCENARIOS + "=" + 0, null);
         if (cursor.moveToFirst()) {
             do {
                 names.add(cursor.getString(cursor.getColumnIndex(WORDS)));
@@ -138,12 +182,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         for(int i = 0; i < names.size(); i++) {
             returnNames[i] = names.get(i);
         }
-        return returnNames;*/
+        return returnNames;
     }
 
     public String[] getGestures() {
-        return gestureWords = c.getResources().getStringArray(R.array.gestures);
-        /*
+//        Log.i(TAG, Arrays.toString(c.getResources().getStringArray(R.array.gestures)));
+//        return gestureWords = c.getResources().getStringArray(R.array.gestures);
+
+//        List<String> names = new ArrayList<>();
+//        names.clear();
+//
+//        final String TABLE_NAME = "gesture_names";
+//
+//        String selectQuery = "SELECT  * FROM " + TABLE_NAME;
+//        SQLiteDatabase db  = this.getReadableDatabase();
+//        Cursor cursor      = db.rawQuery(selectQuery, null);
+//        String[] data      = null;
+//
+//        if (cursor.moveToFirst()) {
+//            do {
+////                Log.i(TAG, String.valueOf(cursor.getCount()));
+////                Log.i(TAG,"Gesture "+Arrays.toString(new String[]{cursor.getString(0)}) +"Text "+Arrays.toString(new String[]{cursor.getString(1)}));
+//                // get the data into array, or class variable
+//                names.add(cursor.getString(0));
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//
+//        String[] returnNames = new String[names.size()];
+//        for(int i = 0; i < names.size(); i++) {
+//            returnNames[i] = names.get(i);
+//            Log.i(TAG, String.valueOf(returnNames[i]));
+//
+//        }
+//        return returnNames;
+
+
+
         ArrayList<String> gestures = new ArrayList<>();
         Cursor cursor = this.db.rawQuery(
                 "SELECT " + GESTURES + " FROM " + TABLE_NAME+ " WHERE " + SCENARIOS + "=" + 0, null);
@@ -157,6 +232,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         for(int i = 0; i < gestures.size(); i++) {
             returnGestures[i] = gestures.get(i);
         }
-        return returnGestures;*/
+        return returnGestures;
     }
 }

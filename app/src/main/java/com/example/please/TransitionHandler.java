@@ -1,6 +1,7 @@
 package com.example.please;
 
 import android.os.Build;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,14 +22,14 @@ import java.util.ArrayList;
 import static android.text.InputType.TYPE_CLASS_TEXT;
 
 class TransitionHandler {
-    
+    private static final String TAG = "MyActivity";
+
     TransitionHandler(MainActivity a, DatabaseHelper db) {
         this.a = a;
         this.db = db;
     }
     private final MainActivity a;
     private final DatabaseHelper db;
-
 
 //        a.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -41,6 +42,10 @@ class TransitionHandler {
         // Gather the static array containing all of the gesture names
         String[] gestureNames = db.getNames();
         String[] gests = db.getGestures();
+//        Log.i(TAG, String.valueOf(gestureNames));
+//        Log.i(TAG, String.valueOf(gests));
+//        Log.i(TAG, String.valueOf(restoreToDefault));
+//        restoreToDefault=true;
         if (restoreToDefault) {
             gestureNames = a.getResources().getStringArray(R.array.names);
             gests = a.getResources().getStringArray(R.array.gestures);
@@ -64,6 +69,8 @@ class TransitionHandler {
 
         // Iterate through each gesture name, create and append a new GUI child onto the parent
         for (int i = 0; i < gestureNames.length; i++) {
+//            Log.i(TAG, String.valueOf(gestureNames[i]));
+//            Log.i(TAG, String.valueOf(gests));
             // dynamically create the new text and image elements
             lp.setMargins(0,margin,0,0);
             et = new EditText(a);
@@ -138,6 +145,8 @@ class TransitionHandler {
             gestures[i] = spinners.get(i);
             System.out.println(names[i] +" mapped to " + gestures[i]);
         }
+        System.out.println("TDatabase"+db);
+
         db.insertNames(names, gestures);
         actionBarForUpdateGesture();
     }

@@ -1,12 +1,14 @@
 package com.example.please.StateMachine;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.please.Database.DatabaseHelper;
 import com.example.please.MainActivity;
 import com.example.please.Speaker;
 
 public class StateMachine {
+    private static final String TAG = "MyActivity";
 
     private State state;
 
@@ -52,6 +54,7 @@ public class StateMachine {
 
         for(int i = 0; i < names.length; i++) {
             if (s.equals(gestures[i])) {
+                Log.i(TAG, "X " + s.equals(gestures[i])+names[i]);
                 speaker.saySomething(names[i]);
             }
         }

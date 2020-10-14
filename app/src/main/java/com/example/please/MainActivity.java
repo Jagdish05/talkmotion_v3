@@ -10,20 +10,18 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
@@ -36,6 +34,9 @@ import com.example.please.StateMachine.StateMachine;
 public class MainActivity extends AppCompatActivity implements SensorEventListener, AdapterView.OnItemSelectedListener {
 
 //    Toolbar toolbar=findViewById ( R.id.topAppBar );
+
+
+
     private StateMachine sm;
     private static final String TAG = "MyActivity";
 
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         item.setActionView(R.layout.switch_layout);
         @SuppressLint("UseSwitchCompatOrMaterialCode") Switch switchAB = item
                 .getActionView().findViewById(R.id.switchAB);
+
         switchAB.setChecked(false);
 
         switchAB.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -93,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         });
         return true;
+
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -141,9 +145,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
+
         DatabaseHelper db = new DatabaseHelper(this);
+
         sm = new StateMachine(this, db);
         transition = new TransitionHandler(this, db);
+
 
         // Instantiate and register each sensor variable to each of it's
         // corresponding hardware sensors
@@ -156,6 +163,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager.registerListener(MainActivity.this, gravity, SensorManager.SENSOR_DELAY_NORMAL);
         sensorManager.registerListener(MainActivity.this, gyro, SensorManager.SENSOR_DELAY_NORMAL);
 
+
+        String[] gestureNames = db.getNames();
+        String[] returnNames = new String[gestureNames.length];
+        for(int i = 0; i < returnNames.length; i++) {
+            returnNames[i] = gestureNames[i];
+        }
+        Log.i(TAG, "gestureNames" +returnNames);
+
+        String[] mobileArray = gestureNames;
+        ArrayAdapter adapter = new ArrayAdapter<String>(getApplicationContext(),
+                R.layout.activity_listview, mobileArray);
+
+        ListView listView = (ListView) findViewById(R.id.gestureNameList);
+        listView.setAdapter(adapter);
     }
     /**
      * This function needs to be here to prevent the super method from doing something weird
@@ -465,4 +486,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
+
+
 }
