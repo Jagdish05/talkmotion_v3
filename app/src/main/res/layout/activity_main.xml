@@ -27,12 +27,18 @@
 
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:id="@+id/gestureNameList"
+            android:id="@+id/expandableListView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_sec"
-            />
+            app:layout_constraintTop_toBottomOf="@id/toolbar_sec"/>
 
+<!--        <ExpandableListView-->
+<!--            android:id="@+id/expandableListView"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"-->
+<!--            android:divider="#A4C739"-->
+<!--            android:dividerHeight="0.5dp" />-->
         <!--    -->
 <!--    <com.google.android.material.appbar.MaterialToolbar-->
 <!--        android:id="@+id/topAppBar"-->

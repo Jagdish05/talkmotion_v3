@@ -3,6 +3,7 @@ package com.example.please;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -13,21 +14,30 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
 
 import com.example.please.Database.DatabaseHelper;
 import com.example.please.StateMachine.StateMachine;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -36,6 +46,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //    Toolbar toolbar=findViewById ( R.id.topAppBar );
 
 
+//    ExpandableListView expandableListView;
+//    ExpandableListAdapter expandableListAdapter;
+//    List<String> expandableListTitle;
+//    HashMap<String, List<String>> expandableListDetail;
 
     private StateMachine sm;
     private static final String TAG = "MyActivity";
@@ -175,8 +189,51 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         ArrayAdapter adapter = new ArrayAdapter<String>(getApplicationContext(),
                 R.layout.activity_listview, mobileArray);
 
-        ListView listView = (ListView) findViewById(R.id.gestureNameList);
+        ListView listView = (ListView) findViewById(R.id.expandableListView);
         listView.setAdapter(adapter);
+
+//        expandableListView = (ExpandableListView) findViewById(R.id.expandedListItem);
+//        expandableListDetail = ExpandableListDataPump.getData();
+//        expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
+//        expandableListAdapter = new ExpandableListAdapter1(this, expandableListTitle, expandableListDetail);
+//        expandableListView.setAdapter(expandableListAdapter);
+//        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+//
+//            @Override
+//            public void onGroupExpand(int groupPosition) {
+//                Toast.makeText(getApplicationContext(),
+//                        expandableListTitle.get(groupPosition) + " List Expanded.",
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        expandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+//
+//            @Override
+//            public void onGroupCollapse(int groupPosition) {
+//                Toast.makeText(getApplicationContext(),
+//                        expandableListTitle.get(groupPosition) + " List Collapsed.",
+//                        Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//            @Override
+//            public boolean onChildClick(ExpandableListView parent, View v,
+//                                        int groupPosition, int childPosition, long id) {
+//                Toast.makeText(
+//                        getApplicationContext(),
+//                        expandableListTitle.get(groupPosition)
+//                                + " -> "
+//                                + expandableListDetail.get(
+//                                expandableListTitle.get(groupPosition)).get(
+//                                childPosition), Toast.LENGTH_SHORT
+//                )
+//                        .show();
+//                return false;
+//            }
+//        });
     }
     /**
      * This function needs to be here to prevent the super method from doing something weird
