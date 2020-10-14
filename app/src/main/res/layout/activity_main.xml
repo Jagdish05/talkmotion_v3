@@ -32,7 +32,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar_sec"/>
 
-<!--        <ExpandableListView-->
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginBottom="120dp"
+            android:background="@drawable/round_button"
+            android:text="@string/start"
+            app:layout_constraintBottom_toTopOf="@+id/button3"
+            app:layout_constraintStart_toStartOf="@+id/button3" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/round_button"
+            android:text="@string/settings"
+            tools:layout_editor_absoluteX="103dp"
+            tools:layout_editor_absoluteY="422dp" />
+
+        <!--        <ExpandableListView-->
 <!--            android:id="@+id/expandableListView"-->
 <!--            android:layout_height="match_parent"-->
 <!--            android:layout_width="match_parent"-->
